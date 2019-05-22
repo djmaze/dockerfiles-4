@@ -77,3 +77,15 @@ steps:
       event:
         exclude:
           - pull_request
+
+---
+kind: secret
+
+external_data:
+  docker_username:
+    path: secret/docker
+    name: username
+
+  docker_password:
+    path: secret/docker
+    name: password
