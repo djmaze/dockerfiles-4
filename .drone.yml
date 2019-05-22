@@ -1,0 +1,79 @@
+kind: pipeline
+name: amd64
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+  - name: build
+    image: plugins/docker
+    settings:
+      auto_tag: true
+      auto_tag_suffix: amd64
+      repo: mazzolino/invoiceninja
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+    when:
+      branch:
+        exclude:
+          - master
+      event:
+        exclude:
+          - pull_request
+
+---
+kind: pipeline
+name: arm
+
+platform:
+  os: linux
+  arch: arm
+
+steps:
+  - name: build
+    image: plugins/docker:linux-arm
+    settings:
+      auto_tag: true
+      auto_tag_suffix: arm
+      repo: mazzolino/invoiceninja
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+    when:
+      branch:
+        exclude:
+          - master
+      event:
+        exclude:
+          - pull_request
+
+---
+kind: pipeline
+name: arm64
+
+platform:
+  os: linux
+  arch: arm64
+
+steps:
+  - name: build
+    image: plugins/docker:linux-arm64
+    settings:
+      auto_tag: true
+      auto_tag_suffix: arm64
+      repo: mazzolino/invoiceninja
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+    when:
+      branch:
+        exclude:
+          - master
+      event:
+        exclude:
+          - pull_request
