@@ -78,14 +78,15 @@ steps:
         exclude:
           - pull_request
 
----
-kind: secret
+# TODO Vault secrets disabled until https://github.com/drone/drone-vault/pull/1 is merged
+#---
+#kind: secret
 
-external_data:
-  docker_username:
-    path: secret/docker
-    name: username
+#external_data:
+  #docker_username:
+    #path: secret/docker
+    #name: username
 
-  docker_password:
-    path: secret/docker
-    name: password
+  #docker_password:
+    #path: secret/docker
+    #name: password
